@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/p5.min.js"></script>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+</style>
+<meta charset="utf-8" />
+</head>
+<body>
+<script>
+
+var x1 = 230;
+var x2 = 230;
+var x3 = 230;
+var y1 = 220;
+var y2 = 220;
+var y3 = 220;
+var y4 = 220;
+var waterLevel = 0
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(0);
+  noStroke();
+
+  // draw pipe
+  fill(255);
+  rect(0, 200, x2, 20);
+
+  // draw drip 1
+  fill(0, 0 , 255);
+  ellipse(x2, y1, 12);
+
+  // draw drip 2
+  fill(0, 0 , 255);
+  ellipse(x2, y2, 10);
+
+  // draw drip 3
+  fill(0, 0 , 255);
+  ellipse(x1, y3, 10);
+
+  // draw drip 4
+  fill(0, 0, 255);
+  ellipse(x3, y4, 8)
+
+  // draw water level
+  fill(0, 0, 255);
+  rect(0, 400, width, waterLevel)
+
+  // down 3 pixels each frame, but maybe should be accelerating?
+  y1 = y1 + 30
+  y2 = y2 + 20
+  y3 = y3 + 10
+  x1 = x1 - 0.5
+  x3 = x3 - 10
+  waterLevel = waterLevel - 0.1
+
+  // if invisible for a full “height” amount…
+  if (y1 > height*2) {
+    // reset
+    y1 = 220;
+  }
+
+  if (y2 > height*1.5) {
+    // reset
+    y2 = 220;
+  }
+
+  if (y3 > height*2) {
+    // reset
+    y3 = 220;
+  }
+
+  if (x1 < 0) {
+    // reset
+    x1 = 230;
+  }
+
+  if (x3 < -50) {
+    // reset
+    x3 = 230;
+  }
+
+}
+
+</script>
+</body>
+</html>
